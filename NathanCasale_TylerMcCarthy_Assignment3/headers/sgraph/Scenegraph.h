@@ -117,6 +117,14 @@ namespace sgraph
         }
     }
 
+    /**
+      * This function will add a texture to the renderer using a name/path string
+      */
+    void addTextureToRenderer(const string& name, const string& path)
+    {
+        renderer->addTexture(name,path);
+    }
+
 
     /**
      * Draw this scene graph. It delegates this operation to the renderer

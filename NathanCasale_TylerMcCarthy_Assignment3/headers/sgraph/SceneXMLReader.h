@@ -255,6 +255,7 @@ namespace sgraph
 			if ((name.length()>0) && (path.length()>0))
 			{
 				scenegraph->addTexture(name,path);
+                //scenegraph->addTextureToRenderer(name,path);
 			}
         }
       else if(qName.compare("light") == 0)

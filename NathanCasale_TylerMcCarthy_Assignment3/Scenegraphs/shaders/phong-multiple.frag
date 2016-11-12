@@ -14,6 +14,8 @@ struct LightProperties
     vec3 diffuse;
     vec3 specular;
     vec4 position;
+    vec3 spotdirection;
+    float spotangle;
 };
 
 
@@ -37,7 +39,8 @@ void main()
     vec3 lightVec,viewVec,reflectVec;
     vec3 normalView;
     vec3 ambient,diffuse,specular;
-    float nDotL,rDotV;
+    float nDotL,rDotV,dDotNegL,cosTheta;
+    float in_spotlight;
 
 
     fColor = vec4(0,0,0,1);
@@ -66,8 +69,20 @@ void main()
         if (nDotL>0)
             specular = material.specular * light[i].specular * pow(rDotV,material.shininess);
         else
-            specular = vec3(0,0,0);
-        fColor = fColor + vec4(ambient+diffuse+specular,1.0);
+            specular = vec3(0,0,0); 
+
+
+        dDotNegL = dot(light[i].spotdirection,(-1*lightVec));
+        cosTheta = cos(light[i].spotangle);
+        if(dDotNegL > cosTheta)
+            in_spotlight = 1;
+        else
+            in_spotlight = 0;
+
+
+
+
+        fColor = fColor + in_spotlight*vec4(ambient+diffuse+specular,1.0);
     }
     //fColor = fColor * texture(image,fTexCoord.st);
     //fColor = vec4(fTexCoord.s,fTexCoord.t,0,1);

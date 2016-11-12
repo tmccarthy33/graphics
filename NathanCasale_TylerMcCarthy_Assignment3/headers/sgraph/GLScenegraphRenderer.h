@@ -154,6 +154,9 @@ public:
                lL.diffuse = shaderLocations.getLocation(name.str() + ".diffuse");
                lL.specular = shaderLocations.getLocation(name.str() + ".specular");
                lL.position = shaderLocations.getLocation(name.str() + ".position");
+               lL.spotangle = shaderLocations.getLocation(name.str() + ".spotangle");
+               lL.spotdirection = shaderLocations.getLocation(name.str() + ".spotdirection");
+
 
                light_locs.push_back(lL);
 
@@ -167,6 +170,18 @@ public:
                gl.glUniform3fv(lL.ambient, 1, glm::value_ptr(lights[i].getAmbient()));
                gl.glUniform3fv(lL.diffuse, 1, glm::value_ptr(lights[i].getAmbient()));
                gl.glUniform3fv(lL.specular, 1,glm::value_ptr(lights[i].getSpecular()));
+
+               //Set Spot angle and direction
+               glm::vec4 spot_dir = lights[i].getSpotDirection();
+               spot_dir = transformation * spot_dir;
+
+               gl.glUniform3fv(lL.spotdirection,1,glm::value_ptr(spot_dir));
+
+               float spot_angle = lights[i].getSpotCutoff();
+               if(spot_angle == 0)
+                   spot_angle = 180.0f;
+               gl.glUniform1f(lL.spotangle,spot_angle);
+
 
                light_count++;
 
@@ -242,6 +257,17 @@ public:
                 throw runtime_error("No shader varialbe for \" material.shininess \"");
             glContext->glUniform1f(loc,
                                     material.getShininess());
+
+            /*loc = shaderLocations.getLocation("image");
+            if(loc < 0)
+                throw(runtime_error("No shader variable for \"image\""));
+
+
+            QOpenGLTexture * tex = textures[textureName]->getTexture();
+
+            tex->bind();
+
+            glContext->glUniform1i(loc,0);*/
         }
     }
 

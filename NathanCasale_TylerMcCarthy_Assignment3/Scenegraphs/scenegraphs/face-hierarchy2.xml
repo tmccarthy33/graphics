@@ -6,6 +6,13 @@
     <image name="earth" path="textures/earthmap.png" />
     <image name="white" path="textures/white.png" />
 
+   <light>
+        <ambient>0.9 0.9 0.9</ambient>
+        <diffuse>0.4 0.4 0.4</diffuse>
+        <specular>0.4 0.4 0.4</specular>
+        <position>0 100 0 </position>
+    </light>
+
  
     <transform>
         <set>
