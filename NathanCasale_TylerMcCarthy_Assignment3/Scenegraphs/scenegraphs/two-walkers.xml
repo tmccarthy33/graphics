@@ -1,0 +1,18 @@
+<scene>
+    <group>
+        <transform>
+            <set>
+                <translate>-40 0 0</translate>
+            </set>
+            <group name="ONE" from="scenegraphs/walker.xml">
+            </group>
+        </transform>
+		<transform>
+            <set>
+                <translate>40 0 0</translate>
+            </set>
+            <group name="TWO" from="scenegraphs/walker.xml">
+            </group>
+        </transform>
+    </group>
+</scene>
