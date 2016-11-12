@@ -79,6 +79,10 @@ namespace sgraph
     map<string, sgraph::INode *> subgraph;
     vector<float> data;
 
+    //Flags to deliniate between material/light
+    bool light_flag = false;
+    bool mat_flag = false;
+
   public:
     sgraph::Scenegraph *getScenegraph() {
       return scenegraph;
@@ -297,33 +301,45 @@ namespace sgraph
         }
       else if(qName.compare("light")==0)
       {
+          light_flag = true;
+          mat_flag = false;
           stackNodes.top()->addLight(light);
           light = util::Light();
       }
-      else if(qName.compare("l_ambient")==0)
+      else if(qName.compare("ambient")==0)
       {
           if(data.size()!=3)
               return false;
-          light.setAmbient(data[0],data[1],data[2]);
+          if(light_flag)
+              light.setAmbient(data[0],data[1],data[2]);
+          else
+              material.setAmbient(data[0],data[1],data[2]);
           data.clear();
       }
-      else if(qName.compare("l_diffuse")==0)
+      else if(qName.compare("diffuse")==0)
       {
           if(data.size()!=3)
               return false;
-          light.setDiffuse(data[0],data[1],data[2]);
-          data.clear();
-
-      }
-      else if(qName.compare("l_specular")==0)
-      {
-          if(data.size()!=3)
-              return false;
-          light.setSpecular(data[0],data[1],data[2]);
+          if(light_flag)
+              light.setDiffuse(data[0],data[1],data[2]);
+          else
+              material.setDiffuse(data[0],data[1],data[2]);
           data.clear();
 
       }
-      else if(qName.compare("l_position")==0)
+      else if(qName.compare("specular")==0)
+      {
+
+          if(data.size()!=3)
+              return false;
+          if(light_flag)
+              light.setSpecular(data[0],data[1],data[2]);
+          else
+              material.setSpecular(data[0],data[1],data[2]);
+          data.clear();
+
+      }
+      else if(qName.compare("position")==0)
       {
           if(data.size()!=3)
               return false;
@@ -346,6 +362,8 @@ namespace sgraph
       }
       else if (qName.compare("material")==0)
         {
+          light_flag = false;
+          mat_flag = true;
           stackNodes.top()->setMaterial(material);
           material = util::Material();
         }
@@ -358,27 +376,6 @@ namespace sgraph
           material.setDiffuse(material.getAmbient());
           material.setSpecular(material.getAmbient());
           material.setShininess(1.0f);
-          data.clear();
-        }
-      else if (qName.compare("ambient")==0)
-        {
-          if (data.size()!=3)
-            return false;
-          material.setAmbient(data[0],data[1],data[2]);
-          data.clear();
-        }
-      else if (qName.compare("diffuse")==0)
-        {
-          if (data.size()!=3)
-            return false;
-          material.setDiffuse(data[0],data[1],data[2]);
-          data.clear();
-        }
-      else if (qName.compare("specular")==0)
-        {
-          if (data.size()!=3)
-            return false;
-          material.setSpecular(data[0],data[1],data[2]);
           data.clear();
         }
       else if (qName.compare("emissive")==0)
