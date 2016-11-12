@@ -58,6 +58,11 @@ protected :
      */
     bool shaderLocationsSet;
 
+    /**
+      * Keeps track of how many lights we have put into our scene
+      */
+    int light_count = 0;
+
 public:
     GLScenegraphRenderer()
     {
@@ -143,7 +148,7 @@ public:
            for(int i=0; i<lights.size(); i++)
            {
                LightLocation lL;
-               name << "light[" << i << "]";
+               name << "light[" << light_count << "]";
 
                lL.ambient = shaderLocations.getLocation(name.str() + "" +".ambient");
                lL.diffuse = shaderLocations.getLocation(name.str() + ".diffuse");
@@ -213,7 +218,7 @@ public:
         }
     }
 
-    void drawMesh(const string& name,
+    /*void drawMesh(const string& name,
                   const util::Material& material,
                   const util::Light& light,
                   const string& textureName,
@@ -288,7 +293,7 @@ public:
 
 
 
-    }
+    }*/
 
 
 

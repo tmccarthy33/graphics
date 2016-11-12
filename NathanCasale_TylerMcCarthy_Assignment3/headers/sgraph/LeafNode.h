@@ -32,7 +32,7 @@ protected:
     util::Material material;
 
     //The light(s) we will use
-    vector<util::Light> lights;
+    //vector<util::Light> lights;
 
     string textureName;
 

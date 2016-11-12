@@ -29,6 +29,10 @@ namespace sgraph
  */
   class INode
   {
+  protected:
+      //The light(s) we will use
+      vector<util::Light> lights;
+
   public:
     /**
      * In the scene graph rooted at this node, get the node whose name is as given

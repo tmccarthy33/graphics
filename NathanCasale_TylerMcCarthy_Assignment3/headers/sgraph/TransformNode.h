@@ -138,12 +138,20 @@ namespace sgraph
       modelView.pop();
     }
 
+    void addLight(util::Light light)
+    {
+        lights.push_back(light);
+    }
+
     void parseForLights(GLScenegraphRenderer& context, vector<LightLocation>& light_locs, stack<glm::mat4>& modelview,util::OpenGLFunctions& gl)
     {
         modelview.push(modelview.top());
         modelview.top() = modelview.top() *
                 animation_transform *
                 transform;
+        //Add any lights attached to this Transform Node
+        context.getLights(lights,light_locs,modelview.top(),gl);
+
         if(child!=NULL)
         {
             child->parseForLights(context,light_locs,modelview,gl);
