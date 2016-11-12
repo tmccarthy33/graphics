@@ -90,7 +90,7 @@ namespace sgraph
         }
     }
 
-    void addLight(util::Light light)
+    void addLight(const util::Light& light) throw(runtime_error)
     {
         lights.push_back(light);
     }

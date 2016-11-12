@@ -162,16 +162,23 @@ public:
                pos = transformation * pos;
                gl.glUniform4fv(lL.position, 1, glm::value_ptr(pos));
 
-               gl.glUniform1i(numLightsLocation,lights.size());
+               gl.glUniform1i(numLightsLocation,light_count);
 
                gl.glUniform3fv(lL.ambient, 1, glm::value_ptr(lights[i].getAmbient()));
                gl.glUniform3fv(lL.diffuse, 1, glm::value_ptr(lights[i].getAmbient()));
                gl.glUniform3fv(lL.specular, 1,glm::value_ptr(lights[i].getSpecular()));
 
+               light_count++;
+
 
            }
         }
 
+    }
+
+    void resetLightCount()
+    {
+        light_count = 0;
     }
 
     void dispose()
@@ -199,14 +206,8 @@ public:
     {
         if (meshRenderers.count(name)==1)
         {
-            int loc = shaderLocations.getLocation("vColor");
-            //set the color for all vertices to be drawn for this object
-            if (loc<0)
-                throw runtime_error("No shader variable for \" vColor \"");
 
-            glContext->glUniform3fv(loc,1,glm::value_ptr(material.getAmbient()));
-
-            loc = shaderLocations.getLocation("modelview");
+            int loc = shaderLocations.getLocation("modelview");
             if (loc<0)
                 throw runtime_error("No shader variable for \" modelview \"");
 
@@ -215,6 +216,32 @@ public:
                                   false,glm::value_ptr(transformation));
 
             meshRenderers[name]->draw(*glContext);
+
+            //Pass Material Properties to Shader
+            loc = shaderLocations.getLocation("material.ambient");
+            if(loc < 0)
+                throw runtime_error("No shader varialbe for \" material.ambient \"");
+            glContext->glUniform3fv(loc,
+                                    1,
+                                    glm::value_ptr(material.getAmbient()));
+
+            loc = shaderLocations.getLocation("material.diffuse");
+            if(loc < 0)
+                throw runtime_error("No shader varialbe for \" material.diffuse \"");
+            glContext->glUniform3fv(loc,
+                                    1,
+                                    glm::value_ptr(material.getDiffuse()));
+            loc = shaderLocations.getLocation("material.specular");
+            if(loc < 0)
+                throw runtime_error("No shader varialbe for \" material.specular \"");
+            glContext->glUniform3fv(loc,
+                                    1,
+                                    glm::value_ptr(material.getSpecular()));
+            loc = shaderLocations.getLocation("material.shininess");
+            if(loc < 0)
+                throw runtime_error("No shader varialbe for \" material.shininess \"");
+            glContext->glUniform1f(loc,
+                                    material.getShininess());
         }
     }
 
@@ -263,31 +290,7 @@ public:
 
         tex->bind();
 
-        //Pass Material Properties to Shader
-        loc = shaderLocations.getLocation("material.ambient");
-        if(loc < 0)
-            throw runtime_error("No shader varialbe for \" material.ambient \"");
-        glContext->glUniform3fv(loc,
-                                1,
-                                glm::value_ptr(material.getAmbient()));
 
-        loc = shaderLocations.getLocation("material.diffuse");
-        if(loc < 0)
-            throw runtime_error("No shader varialbe for \" material.diffuse \"");
-        glContext->glUniform3fv(loc,
-                                1,
-                                glm::value_ptr(material.getDiffuse()));
-        loc = shaderLocations.getLocation("material.specular");
-        if(loc < 0)
-            throw runtime_error("No shader varialbe for \" material.specular \"");
-        glContext->glUniform3fv(loc,
-                                1,
-                                glm::value_ptr(material.getSpecular()));
-        loc = shaderLocations.getLocation("material.shininess");
-        if(loc < 0)
-            throw runtime_error("No shader varialbe for \" material.shininess \"");
-        glContext->glUniform1f(loc,
-                                material.getShininess());
 
 
 

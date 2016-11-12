@@ -63,9 +63,10 @@ void OpenGLWindow::initializeGL()
     string xml_file;
     //cout << "Enter name of XML file to view (include .xml): ";
     //cin >> xml_file;
-    xml_file = "humanoid-YMCA.xml";
-    if(xml_file == "humanoid-YMCA.xml")
-        view.setYMCATrue();
+    xml_file = "face-hierarchy2.xml";
+    //if(xml_file == "humanoid-YMCA.xml")
+    //    view.setYMCATrue();
+    view.setYMCATrue();
     xml_file = "scenegraphs/" + xml_file;
     view.initScenegraph(*gl,xml_file);
 }

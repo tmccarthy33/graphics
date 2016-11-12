@@ -201,7 +201,10 @@ namespace sgraph
           if (objectname.length() > 0)
             {
               node = new sgraph::LeafNode(objectname, scenegraph, name);
-			  node->setTextureName(textureName);
+              if(textureName == "")
+                  node->setTextureName("white");
+              else
+                  node->setTextureName(textureName);
 
               stackNodes.top()->addChild(node);
 
@@ -254,6 +257,16 @@ namespace sgraph
 				scenegraph->addTexture(name,path);
 			}
         }
+      else if(qName.compare("light") == 0)
+      {
+          light_flag = true;
+          mat_flag = false;
+      }
+      else if(qName.compare("material") == 0)
+      {
+          mat_flag = true;
+          light_flag = false;
+      }
 
       return true;
     }
@@ -301,8 +314,6 @@ namespace sgraph
         }
       else if(qName.compare("light")==0)
       {
-          light_flag = true;
-          mat_flag = false;
           stackNodes.top()->addLight(light);
           light = util::Light();
       }
@@ -346,14 +357,14 @@ namespace sgraph
           light.setPosition(data[0],data[1],data[2]);
           data.clear();
       }
-      else if(qName.compare("spot_direction")==0)
+      else if(qName.compare("spotdirection")==0)
       {
           if(data.size()!=3)
               return false;
           light.setSpotDirection(data[0],data[1],data[2]);
           data.clear();
       }
-      else if(qName.compare("spot_angle")==0)
+      else if(qName.compare("spotangle")==0)
       {
           if(data.size()!=1)
               return false;
@@ -362,8 +373,6 @@ namespace sgraph
       }
       else if (qName.compare("material")==0)
         {
-          light_flag = false;
-          mat_flag = true;
           stackNodes.top()->setMaterial(material);
           material = util::Material();
         }

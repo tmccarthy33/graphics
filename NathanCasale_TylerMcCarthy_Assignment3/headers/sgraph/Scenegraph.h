@@ -256,6 +256,12 @@ namespace sgraph
     {
       textures[name] = path;
     }
+
+    void resetLightCount()
+    {
+        if(renderer!=NULL)
+            renderer->resetLightCount();
+    }
   };
 }
 #endif

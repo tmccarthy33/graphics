@@ -138,7 +138,7 @@ namespace sgraph
       modelView.pop();
     }
 
-    void addLight(util::Light light)
+    void addLight(const util::Light& light) throw(runtime_error)
     {
         lights.push_back(light);
     }
@@ -149,6 +149,7 @@ namespace sgraph
         modelview.top() = modelview.top() *
                 animation_transform *
                 transform;
+
         //Add any lights attached to this Transform Node
         context.getLights(lights,light_locs,modelview.top(),gl);
 
