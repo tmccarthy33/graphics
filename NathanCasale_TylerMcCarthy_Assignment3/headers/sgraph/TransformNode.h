@@ -143,7 +143,7 @@ namespace sgraph
         lights.push_back(light);
     }
 
-    void parseForLights(GLScenegraphRenderer& context, vector<LightLocation>& light_locs, stack<glm::mat4>& modelview,util::OpenGLFunctions& gl)
+    void parseForLights(GLScenegraphRenderer& context, vector<LightLocation>& light_locs, stack<glm::mat4>& modelview,util::OpenGLFunctions& gl,glm::mat4& camera_transform)
     {
         modelview.push(modelview.top());
         modelview.top() = modelview.top() *
@@ -153,9 +153,16 @@ namespace sgraph
         //Add any lights attached to this Transform Node
         context.getLights(lights,light_locs,modelview.top(),gl);
 
+        //Let's take this opportunity to grab the transform needed to change our camera
+        if(name == "torso")
+        {
+           camera_transform = glm::inverse(animation_transform * transform);
+
+        }
+
         if(child!=NULL)
         {
-            child->parseForLights(context,light_locs,modelview,gl);
+            child->parseForLights(context,light_locs,modelview,gl,camera_transform);
         }
         modelview.pop();
     }

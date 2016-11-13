@@ -133,9 +133,9 @@ public:
         root->draw(*this,modelView);
     }
 
-    void parseForLights(INode* root, vector<LightLocation>& light_locs, stack<glm::mat4>& modelview,util::OpenGLFunctions& gl)
+    void parseForLights(INode* root, vector<LightLocation>& light_locs, stack<glm::mat4>& modelview,util::OpenGLFunctions& gl,glm::mat4& camera_transform)
     {
-        root->parseForLights(*this,light_locs,modelview,gl);
+        root->parseForLights(*this,light_locs,modelview,gl,camera_transform);
     }
 
     void getLights(vector<util::Light>& lights, vector<LightLocation>& light_locs, const glm::mat4& transformation,util::OpenGLFunctions& gl)

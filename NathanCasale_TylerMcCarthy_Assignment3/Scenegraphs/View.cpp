@@ -80,12 +80,20 @@ void View::draw(util::OpenGLFunctions& gl)
          * We use a modelview matrix to store the transformations to be applied to our triangle.
          * Right now this matrix is identity, which means "no transformations"
          */
-  modelview.push(glm::mat4(1.0));
-  modelview.top() = modelview.top() *
-      glm::lookAt(glm::vec3(0.0f,50.0f,80.0f),
-                  glm::vec3(0.0f,50.0f,0.0f),
-                  glm::vec3(0.0f,1.0f,0.0f)) *
-      trackballTransform;
+  if(camera_type == GLOBAL)
+  {
+      modelview.push(glm::mat4(1.0));
+      modelview.top() = modelview.top() *
+          glm::lookAt(glm::vec3(0.0f,50.0f,80.0f),
+                      glm::vec3(0.0f,50.0f,0.0f),
+                      glm::vec3(0.0f,1.0f,0.0f)) *
+          trackballTransform;
+  }
+  else
+  {
+      modelview.push(glm::mat4(1.0f));
+  }
+
 
   /*
         *Supply the shader with all the matrices it expects.
@@ -95,7 +103,9 @@ void View::draw(util::OpenGLFunctions& gl)
                         false,
                         glm::value_ptr(proj));
 
-  //gl.glPolygonMode(GL.GL_FRONT_AND_BACK,GL3.GL_LINE); //OUTLINES
+  gl.glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
+
+  //gl.glPolygonMode(GL.GL_FRONT_AND_BACK,GL3.GL_LINE);
 
   if(!ymca)
   {
@@ -103,7 +113,16 @@ void View::draw(util::OpenGLFunctions& gl)
       scenegraph->animate(time, 2, "TWO");
   }
 
-  scenegraph->parseForLights(lightLocations, modelview, gl);
+  scenegraph->parseForLights(lightLocations, modelview, gl,camera_transform);
+
+  if(camera_type == FPS)
+  {
+      modelview.top() = modelview.top() *
+              glm::translate(glm::mat4(1.0f),glm::vec3(0.0f, -0.85f, 0.4f)) *
+              camera_transform;
+              //* trackballTransform;
+  }
+
   scenegraph->draw(modelview);
   gl.glFlush();
 
@@ -172,3 +191,13 @@ void View::dispose(util::OpenGLFunctions& gl)
   //release the shader resources
   program.releaseShaders(gl);
 }
+
+void View::setFPS()
+  {
+    camera_type = FPS;
+  }
+
+void View::setGlobal()
+  {
+    camera_type = GLOBAL;
+  }

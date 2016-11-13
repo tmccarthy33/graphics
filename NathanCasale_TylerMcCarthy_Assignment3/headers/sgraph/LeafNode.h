@@ -104,7 +104,7 @@ public:
         }
     }
 
-    void parseForLights(GLScenegraphRenderer& context, vector<LightLocation>& light_locs, stack<glm::mat4>& modelview,util::OpenGLFunctions& gl) throw(runtime_error)
+    void parseForLights(GLScenegraphRenderer& context, vector<LightLocation>& light_locs, stack<glm::mat4>& modelview,util::OpenGLFunctions& gl,glm::mat4& camera_transform) throw(runtime_error)
     {
         if(objInstanceName.length()>0)
         {

@@ -51,7 +51,7 @@ namespace sgraph
      */
     virtual void draw(GLScenegraphRenderer& context,stack<glm::mat4>& modelView)=0;
 
-    virtual void parseForLights(GLScenegraphRenderer& context, vector<LightLocation>& light_locs, stack<glm::mat4>& modelview,util::OpenGLFunctions& gl)=0;
+    virtual void parseForLights(GLScenegraphRenderer& context, vector<LightLocation>& light_locs, stack<glm::mat4>& modelview,util::OpenGLFunctions& gl,glm::mat4& camera_transform)=0;
 
     /**
      * Return a deep copy of the scene graph subtree rooted at this node

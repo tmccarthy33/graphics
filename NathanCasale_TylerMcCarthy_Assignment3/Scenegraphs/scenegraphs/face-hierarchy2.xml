@@ -12,8 +12,7 @@
         <specular>0.4 0.4 0.4</specular>
         <position>0 100 0 </position>
     </light>
-
- 
+     
     <transform>
         <set>
             <scale>200 5 200</scale>

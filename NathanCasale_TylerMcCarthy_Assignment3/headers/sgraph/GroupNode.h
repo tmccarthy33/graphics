@@ -95,7 +95,7 @@ namespace sgraph
         lights.push_back(light);
     }
 
-    void parseForLights(GLScenegraphRenderer& context, vector<LightLocation>& light_locs, stack<glm::mat4>& modelview,util::OpenGLFunctions& gl)
+    void parseForLights(GLScenegraphRenderer& context, vector<LightLocation>& light_locs, stack<glm::mat4>& modelview,util::OpenGLFunctions& gl,glm::mat4& camera_transform)
     {
         //Add any lights attached to this group node to the shader
         context.getLights(lights,light_locs, modelview.top(),gl);
@@ -103,7 +103,7 @@ namespace sgraph
         //Continue to children
         for(int i=0; i<children.size();i++)
         {
-            children[i]->parseForLights(context,light_locs,modelview,gl);
+            children[i]->parseForLights(context,light_locs,modelview,gl,camera_transform);
         }
     }
 

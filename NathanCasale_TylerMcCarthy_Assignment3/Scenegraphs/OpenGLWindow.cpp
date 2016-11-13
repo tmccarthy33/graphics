@@ -63,7 +63,7 @@ void OpenGLWindow::initializeGL()
     string xml_file;
     //cout << "Enter name of XML file to view (include .xml): ";
     //cin >> xml_file;
-    xml_file = "face-hierarchy2.xml";
+    xml_file = "walker_updated.xml";
     //if(xml_file == "humanoid-YMCA.xml")
     //    view.setYMCATrue();
     view.setYMCATrue();
@@ -154,6 +154,22 @@ void OpenGLWindow::setAnimating(bool enabled)
         disconnect(this, SIGNAL(frameSwapped()), this, SLOT(update()));
     }
 }
+
+void OpenGLWindow::keyPressEvent(QKeyEvent *e)
+{
+    switch (e->key())
+    {
+    case Qt::Key_O:
+        view.setFPS();
+        this->update();
+        break;
+    case Qt::Key_G:
+        view.setGlobal();
+        this->update();
+        break;
+    }
+}
+
 
 
 

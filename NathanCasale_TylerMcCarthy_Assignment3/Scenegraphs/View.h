@@ -19,12 +19,11 @@ using namespace std;
  * design better if we wish to port it to another C++-based windowing
  * library
  */
+enum TypeOfCamera {GLOBAL,
+      FPS};
 
 class View
 {
-
-
-
 public:
     View();
     ~View();
@@ -59,6 +58,9 @@ public:
 
     void setYMCATrue(){ymca=true;}
 
+    void setFPS();
+    void setGlobal();
+
 private:
     //record the current window width and height
     int WINDOW_WIDTH,WINDOW_HEIGHT;
@@ -86,6 +88,10 @@ private:
 
     //Lights
     vector<LightLocation> lightLocations;
+
+    //Camera
+    glm::mat4 camera_transform;
+    TypeOfCamera camera_type = FPS;
 };
 
 #endif // VIEW_H

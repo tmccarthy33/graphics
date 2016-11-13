@@ -109,11 +109,11 @@ namespace sgraph
      * Parse through the scengraph so we can extract out the lights and place them correctly
      * before we start doing draws for other objects.
      */
-    void parseForLights(vector<LightLocation>& light_locs, stack<glm::mat4>& modelview,util::OpenGLFunctions& gl)
+    void parseForLights(vector<LightLocation>& light_locs, stack<glm::mat4>& modelview,util::OpenGLFunctions& gl,glm::mat4& camera_transform)
     {
         if((root!=NULL) && (renderer!=NULL))
         {
-            renderer->parseForLights(root,light_locs,modelview,gl);
+            renderer->parseForLights(root,light_locs,modelview,gl,camera_transform);
         }
     }
 
