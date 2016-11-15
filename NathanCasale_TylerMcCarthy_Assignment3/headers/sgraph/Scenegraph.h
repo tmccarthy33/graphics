@@ -120,9 +120,14 @@ namespace sgraph
     /**
       * This function will add a texture to the renderer using a name/path string
       */
-    void addTextureToRenderer(const string& name, const string& path)
+    void addTexturesToRenderer()
     {
-        renderer->addTexture(name,path);
+        for(auto tex : textures)
+        {
+            string one = tex.first;
+            string two = tex.second;
+            renderer->addTexture(tex.first, tex.second);
+        }
     }
 
 
@@ -158,38 +163,38 @@ namespace sgraph
                                           glm::translate(glm::mat4(1.0f), glm::vec3(0.0f,23.0f,0.0f)) *
                                           glm::rotate(glm::mat4(1.0),glm::radians(time),glm::vec3(1.0f,0.0f,0.0f)) *
                                           glm::translate(glm::mat4(1.0f),glm::vec3(0.0f, -23.0f, 0.0f));
-                  nodes[object+"-rightgun-transform"]->setAnimationTransform(rightgun_rotation);
+                  nodes[object+"rightgun-transform"]->setAnimationTransform(rightgun_rotation);
 
                   leftgun_rotation = leftgun_rotation *
                                           glm::translate(glm::mat4(1.0f), glm::vec3(0.0f,23.0f,0.0f)) *
                                           glm::rotate(glm::mat4(1.0),glm::radians(time),glm::vec3(-1.0f,0.0f,0.0f)) *
                                           glm::translate(glm::mat4(1.0f),glm::vec3(0.0f, -23.0f, 0.0f));
-                  nodes[object+"-leftgun-transform"]->setAnimationTransform(leftgun_rotation);
+                  nodes[object+"leftgun-transform"]->setAnimationTransform(leftgun_rotation);
 
                   //Animation to make walker crouch
                   right_thigh_transform = right_thigh_transform *
                                           glm::translate(glm::mat4(1.0f), glm::vec3(0.0f,70.0f,-5.0f)) *
                                           glm::rotate(glm::mat4(1.0f), glm::radians(40*sin(time/50)),glm::vec3(1.0f,0.0f,0.0f)) *
                                           glm::translate(glm::mat4(1.0f),glm::vec3(0.0f,-70.0f,5.0f));
-                  nodes[object+"-rightleg"]->setAnimationTransform(right_thigh_transform);
+                  nodes[object+"rightleg"]->setAnimationTransform(right_thigh_transform);
 
                   left_thigh_transform = left_thigh_transform *
                                           glm::translate(glm::mat4(1.0f), glm::vec3(0.0f,70.0f,-5.0f)) *
                                           glm::rotate(glm::mat4(1.0f), glm::radians(40*sin(time/50)),glm::vec3(1.0f,0.0f,0.0f)) *
                                           glm::translate(glm::mat4(1.0f),glm::vec3(0.0f,-70.0f,5.0f));
-                  nodes[object+"-leftleg"]->setAnimationTransform(left_thigh_transform);
+                  nodes[object+"leftleg"]->setAnimationTransform(left_thigh_transform);
 
                   right_shin_transform = right_shin_transform *
                                           glm::translate(glm::mat4(1.0f),glm::vec3(0.0f,52.0f,-20.0f)) *
                                           glm::rotate(glm::mat4(1.0f),glm::radians(-60*sin(time/50)),glm::vec3(1.0f,0.0f,0.0f)) *
                                           glm::translate(glm::mat4(1.0f),glm::vec3(0.0f,-52.0f,20.0f));
-                  nodes[object+"-rightlowerleg"]->setAnimationTransform(right_shin_transform);
+                  nodes[object+"rightlowerleg"]->setAnimationTransform(right_shin_transform);
 
                   left_shin_transform = left_shin_transform *
                                           glm::translate(glm::mat4(1.0f),glm::vec3(0.0f,52.0f,-20.0f)) *
                                           glm::rotate(glm::mat4(1.0f),glm::radians(-60*sin(time/50)),glm::vec3(1.0f,0.0f,0.0f)) *
                                           glm::translate(glm::mat4(1.0f),glm::vec3(0.0f,-52.0f,20.0f));
-                  nodes[object+"-leftlowerleg"]->setAnimationTransform(left_shin_transform);
+                  nodes[object+"leftlowerleg"]->setAnimationTransform(left_shin_transform);
 
                   float foot_angle;
                   if(-10*sin(time/50) >= 0)
@@ -203,38 +208,38 @@ namespace sgraph
                                           glm::translate(glm::mat4(1.0f), glm::vec3(0.0f,21.0f,-2.0f)) *
                                           glm::rotate(glm::mat4(1.0f),glm::radians(foot_angle),glm::vec3(1.0f,0.0f,0.0f)) *
                                           glm::translate(glm::mat4(1.0f),glm::vec3(0.0f,-21.0f,2.0f));
-                  nodes[object+"-rightfoot"]->setAnimationTransform(right_foot_transform);
+                  nodes[object+"rightfoot"]->setAnimationTransform(right_foot_transform);
 
                   left_foot_transform = left_foot_transform *
                                           glm::translate(glm::mat4(1.0f), glm::vec3(0.0f,21.0f,-2.0f)) *
                                           glm::rotate(glm::mat4(1.0f),glm::radians(foot_angle),glm::vec3(1.0f,0.0f,0.0f)) *
                                           glm::translate(glm::mat4(1.0f),glm::vec3(0.0f,-21.0f,2.0f));
-                  nodes[object+"-leftfoot"]->setAnimationTransform(left_foot_transform);
+                  nodes[object+"leftfoot"]->setAnimationTransform(left_foot_transform);
                       break;
           case 2:
                   upperbody_rotation = upperbody_rotation *
                                           glm::rotate(glm::mat4(1.0),glm::radians(80*sin(time/50)),glm::vec3(0.0f,1.0f,0.0f));
-                  nodes[object+"-torso-rotation"]->setAnimationTransform(upperbody_rotation);
+                  nodes[object+"torso-rotation"]->setAnimationTransform(upperbody_rotation);
                   left_thigh_transform = left_thigh_transform *
                                           glm::translate(glm::mat4(1.0f),glm::vec3(0.0f, 70.0f, -5.0f)) *
                                           glm::rotate(glm::mat4(1.0),glm::radians(40*sin(time/50)),glm::vec3(1.0f,0.0f,0.0f)) *
                                           glm::translate(glm::mat4(1.0f),glm::vec3(0.0f, -70.0f, 5.0f));
-                  nodes[object+"-leftleg"]->setAnimationTransform(left_thigh_transform);
+                  nodes[object+"leftleg"]->setAnimationTransform(left_thigh_transform);
                   left_shin_transform = left_shin_transform *
                                           glm::translate(glm::mat4(1.0f),glm::vec3(0.0f, 52.0f, -20.0f)) *
                                           glm::rotate(glm::mat4(1.0f),glm::radians(80*sin(time/50+150)),glm::vec3(-1.0f,0.0f,0.0f)) *
                                           glm::translate(glm::mat4(1.0f),glm::vec3(0.0f, -52.0f, 20.0f));
-                  nodes[object+"-leftlowerleg"]->setAnimationTransform(left_shin_transform);
+                  nodes[object+"leftlowerleg"]->setAnimationTransform(left_shin_transform);
                   right_thigh_transform = right_thigh_transform *
                                           glm::translate(glm::mat4(1.0f),glm::vec3(0.0f, 70.0f, -5.0f)) *
                                           glm::rotate(glm::mat4(1.0),glm::radians(40*sin(time/50+3.14159f)),glm::vec3(1.0f,0.0f,0.0f)) *
                                           glm::translate(glm::mat4(1.0f),glm::vec3(0.0f, -70.0f, 5.0f));
-                  nodes[object+"-rightleg"]->setAnimationTransform(right_thigh_transform);
+                  nodes[object+"rightleg"]->setAnimationTransform(right_thigh_transform);
                   right_shin_transform = right_shin_transform *
                                           glm::translate(glm::mat4(1.0f),glm::vec3(0.0f, 52.0f, -20.0f)) *
                                           glm::rotate(glm::mat4(1.0f),glm::radians(80*sin(time/50+150+3.14159f)),glm::vec3(-1.0f,0.0f,0.0f)) *
                                           glm::translate(glm::mat4(1.0f),glm::vec3(0.0f, -52.0f, 20.0f));
-                  nodes[object+"-rightlowerleg"]->setAnimationTransform(right_shin_transform);
+                  nodes[object+"rightlowerleg"]->setAnimationTransform(right_shin_transform);
                   break;
           case 3:
                   break;

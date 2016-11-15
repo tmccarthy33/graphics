@@ -4,13 +4,15 @@
     <instance name="cylinder" path="models/cylinder"></instance>
     <instance name="cone" path="models/cone"></instance>
     <image name="earth" path="textures/earthmap.png" />
-    <image name="white" path="textures/white.png" />
+    <image name="white" path="textures/whitebox.png" />
 
    <light>
-        <ambient>0.9 0.9 0.9</ambient>
-        <diffuse>0.4 0.4 0.4</diffuse>
-        <specular>0.4 0.4 0.4</specular>
-        <position>0 100 0 </position>
+        <ambient>0.5 0.5 0.5</ambient>
+        <diffuse>0.9 0.9 0.9</diffuse>
+        <specular>0.2 0.2 0.2</specular>
+        <position>0 500 0 </position>
+        <spotdirection>0 -1 0 </spotdirection>
+        <spotangle> 180 </spotangle>
     </light>
      
     <transform>
@@ -36,12 +38,6 @@
                 <set>
                     <scale>20 25 20</scale>
                 </set>
-                <light>
-                    <ambient>0.9 0.9 0.9</ambient>
-                    <diffuse>0.4 0.4 0.4</diffuse>
-                    <specular>0.4 0.4 0.4</specular>
-                    <position>0 100 100 </position>
-                </light>
                 <object instanceof="sphere">
                     <material>
                         <ambient> 0.1 0.1 0.1 </ambient>
@@ -58,7 +54,7 @@
                 </set>
                 <object instanceof="sphere">
                     <material>
-                        <ambient> 0.9 0.9 0.9 </ambient>
+                        <ambient> 0.1 0.1 0.1 </ambient>
                         <diffuse> 0.2 0.2 0.2</diffuse>
                         <specular> 0.9 0.9 0.9</specular>
                         <shininess> 100 </shininess>

@@ -120,7 +120,7 @@ public:
         } catch (runtime_error e) {
             throw runtime_error("Texture "+path+" cannot be read!");
         }
-        textures[name]=image;
+        this->textures[name]=image;
     }
 
     /**
@@ -147,6 +147,8 @@ public:
            stringstream name;
            for(int i=0; i<lights.size(); i++)
            {
+               light_count++;
+
                LightLocation lL;
                name << "light[" << light_count << "]";
 
@@ -163,6 +165,7 @@ public:
                //Actually set light properties in shader
                glm::vec4 pos = lights[i].getPosition();
                pos = transformation * pos;
+               pos = glm::vec4(pos.x, pos.y, pos.z, 0.0f);
                gl.glUniform4fv(lL.position, 1, glm::value_ptr(pos));
 
                gl.glUniform1i(numLightsLocation,light_count);
@@ -183,7 +186,7 @@ public:
                gl.glUniform1f(lL.spotangle,spot_angle);
 
 
-               light_count++;
+
 
 
            }
@@ -230,7 +233,18 @@ public:
                                   1,
                                   false,glm::value_ptr(transformation));
 
-            meshRenderers[name]->draw(*glContext);
+
+
+
+
+           loc = shaderLocations.getLocation("normalmatrix");
+            if (loc<0)
+                throw runtime_error("No shader variable for \" normalmatrix \"");
+            glm::mat4 normal_mat = glm::inverse(glm::transpose(transformation));
+            glContext->glUniformMatrix4fv(loc,
+                                  1,
+                                  false,glm::value_ptr(normal_mat));
+
 
             //Pass Material Properties to Shader
             loc = shaderLocations.getLocation("material.ambient");
@@ -258,16 +272,18 @@ public:
             glContext->glUniform1f(loc,
                                     material.getShininess());
 
-            /*loc = shaderLocations.getLocation("image");
+            //Do the processing for our texture
+            loc = shaderLocations.getLocation("image");
             if(loc < 0)
                 throw(runtime_error("No shader variable for \"image\""));
-
 
             QOpenGLTexture * tex = textures[textureName]->getTexture();
 
             tex->bind();
 
-            glContext->glUniform1i(loc,0);*/
+            glContext->glUniform1i(loc,0);
+
+            meshRenderers[name]->draw(*glContext);
         }
     }
 

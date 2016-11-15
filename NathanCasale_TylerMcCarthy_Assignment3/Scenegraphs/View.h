@@ -91,7 +91,7 @@ private:
 
     //Camera
     glm::mat4 camera_transform;
-    TypeOfCamera camera_type = FPS;
+    TypeOfCamera camera_type = GLOBAL;
 };
 
 #endif // VIEW_H

@@ -30,7 +30,7 @@ uniform LightProperties light[MAXLIGHTS];
 uniform int numLights;
 
 /* texture */
-//uniform sampler2D image;
+uniform sampler2D image;
 
 out vec4 fColor;
 
@@ -39,6 +39,7 @@ void main()
     vec3 lightVec,viewVec,reflectVec;
     vec3 normalView;
     vec3 ambient,diffuse,specular;
+    vec3 spotdir;
     float nDotL,rDotV,dDotNegL,cosTheta;
     float in_spotlight;
 
@@ -71,19 +72,21 @@ void main()
         else
             specular = vec3(0,0,0); 
 
-
-        dDotNegL = dot(light[i].spotdirection,(-1*lightVec));
+        spotdir = normalize(light[i].spotdirection.xyz);
+        dDotNegL = dot(spotdir,(-lightVec));
         cosTheta = cos(light[i].spotangle);
-        if(dDotNegL > cosTheta)
-            in_spotlight = 1;
+        if(dDotNegL >= cosTheta)
+            in_spotlight = 1.0f;
         else
-            in_spotlight = 0;
+            in_spotlight = 0.0f;
 
 
 
-
-        fColor = fColor + in_spotlight*vec4(ambient+diffuse+specular,1.0);
+        fColor = fColor + in_spotlight*vec4(ambient+diffuse+specular,1.0) - in_spotlight*vec4(ambient+diffuse+specular,1.0) ;
+        //fColor = fColor + vec4(0,0,1,1) - fColor;
+        fColor = fColor + vec4(ambient+diffuse+specular,1.0);
+        //fColor = fColor + vec4(0.5*(1+dDotNegL), 0.5*(1+dDotNegL),0.5*(1+dDotNegL),1.0);
     }
-    //fColor = fColor * texture(image,fTexCoord.st);
+    fColor = fColor + 0*texture(image,fTexCoord.st);
     //fColor = vec4(fTexCoord.s,fTexCoord.t,0,1);
 }

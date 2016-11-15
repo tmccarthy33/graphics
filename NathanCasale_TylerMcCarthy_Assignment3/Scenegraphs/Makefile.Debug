@@ -233,6 +233,7 @@ debug/moc_OpenGLWindow.cpp: C:/Qt/5.7/mingw53_32/include/QtGui/QOpenGLWindow \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qtouchdevice.h \
+		C:/Qt/5.7/mingw53_32/include/QtGui/QKeyEvent \
 		../headers/OpenGLFunctions.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/QOpenGLFunctions_3_3_Core \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qopenglfunctions_3_3_core.h \
@@ -333,25 +334,25 @@ debug/moc_OpenGLWindow.cpp: C:/Qt/5.7/mingw53_32/include/QtGui/QOpenGLWindow \
 		../headers/sgraph/INode.h \
 		../headers/Light.h \
 		../headers/Material.h \
+		lightlocation.h \
 		../headers/glm/gtc/type_ptr.hpp \
 		../headers/glm/gtc/quaternion.hpp \
 		../headers/glm/gtc/constants.hpp \
 		../headers/glm/gtc/constants.inl \
 		../headers/glm/gtc/quaternion.inl \
 		../headers/glm/gtc/type_ptr.inl \
+		../headers/glm/gtc/matrix_transform.hpp \
+		../headers/glm/gtc/matrix_transform.inl \
 		../headers/TextureImage.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/QOpenGLTexture \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qopengltexture.h \
 		../headers/ObjectInstance.h \
 		../headers/PolygonMesh.h \
 		../headers/IVertexData.h \
-		lightlocation.h \
-		../headers/glm/gtc/matrix_transform.hpp \
-		../headers/glm/gtc/matrix_transform.inl \
 		VertexAttrib.h \
 		OpenGLWindow.h \
 		C:/Qt/5.7/mingw53_32/bin/moc.exe
-	C:\Qt\5.7\mingw53_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/5.7/mingw53_32/mkspecs/win32-g++ -I"C:/Users/Nate/Senior Year/Computer Graphics/Post-Header-Update/NathanCasale_TylerMcCarthy_Assignment3/Scenegraphs" -I"C:/Users/Nate/Senior Year/Computer Graphics/Post-Header-Update/NathanCasale_TylerMcCarthy_Assignment3/headers" -IC:/Qt/5.7/mingw53_32/include -IC:/Qt/5.7/mingw53_32/include/QtWidgets -IC:/Qt/5.7/mingw53_32/include/QtGui -IC:/Qt/5.7/mingw53_32/include/QtANGLE -IC:/Qt/5.7/mingw53_32/include/QtXml -IC:/Qt/5.7/mingw53_32/include/QtCore -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward OpenGLWindow.h -o debug\moc_OpenGLWindow.cpp
+	C:\Qt\5.7\mingw53_32\bin\moc.exe $(DEFINES) -D__GNUC__ -DWIN32 -IC:/Qt/5.7/mingw53_32/mkspecs/win32-g++ -I"C:/Users/Nate/Senior Year/Computer Graphics/Assignments/assignment4/NathanCasale_TylerMcCarthy_Assignment3/Scenegraphs" -I"C:/Users/Nate/Senior Year/Computer Graphics/Assignments/assignment4/NathanCasale_TylerMcCarthy_Assignment3/headers" -IC:/Qt/5.7/mingw53_32/include -IC:/Qt/5.7/mingw53_32/include/QtWidgets -IC:/Qt/5.7/mingw53_32/include/QtGui -IC:/Qt/5.7/mingw53_32/include/QtANGLE -IC:/Qt/5.7/mingw53_32/include/QtXml -IC:/Qt/5.7/mingw53_32/include/QtCore -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include -IC:/Qt/Tools/mingw530_32/lib/gcc/i686-w64-mingw32/5.3.0/include-fixed -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++ -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/i686-w64-mingw32 -IC:/Qt/Tools/mingw530_32/i686-w64-mingw32/include/c++/backward OpenGLWindow.h -o debug\moc_OpenGLWindow.cpp
 
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
@@ -504,6 +505,7 @@ debug/main.o: main.cpp C:/Qt/5.7/mingw53_32/include/QtWidgets/QApplication \
 		C:/Qt/5.7/mingw53_32/include/QtGui/QImage \
 		C:/Qt/5.7/mingw53_32/include/QtCore/QCoreApplication \
 		C:/Qt/5.7/mingw53_32/include/QtGui/QMouseEvent \
+		C:/Qt/5.7/mingw53_32/include/QtGui/QKeyEvent \
 		../headers/OpenGLFunctions.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/QOpenGLFunctions_3_3_Core \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qopenglfunctions_3_3_core.h \
@@ -604,21 +606,21 @@ debug/main.o: main.cpp C:/Qt/5.7/mingw53_32/include/QtWidgets/QApplication \
 		../headers/sgraph/INode.h \
 		../headers/Light.h \
 		../headers/Material.h \
+		lightlocation.h \
 		../headers/glm/gtc/type_ptr.hpp \
 		../headers/glm/gtc/quaternion.hpp \
 		../headers/glm/gtc/constants.hpp \
 		../headers/glm/gtc/constants.inl \
 		../headers/glm/gtc/quaternion.inl \
 		../headers/glm/gtc/type_ptr.inl \
+		../headers/glm/gtc/matrix_transform.hpp \
+		../headers/glm/gtc/matrix_transform.inl \
 		../headers/TextureImage.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/QOpenGLTexture \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qopengltexture.h \
 		../headers/ObjectInstance.h \
 		../headers/PolygonMesh.h \
 		../headers/IVertexData.h \
-		lightlocation.h \
-		../headers/glm/gtc/matrix_transform.hpp \
-		../headers/glm/gtc/matrix_transform.inl \
 		VertexAttrib.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o main.cpp
 
@@ -745,6 +747,7 @@ debug/OpenGLWindow.o: OpenGLWindow.cpp OpenGLWindow.h \
 		C:/Qt/5.7/mingw53_32/include/QtCore/qfiledevice.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qvector2d.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qtouchdevice.h \
+		C:/Qt/5.7/mingw53_32/include/QtGui/QKeyEvent \
 		../headers/OpenGLFunctions.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/QOpenGLFunctions_3_3_Core \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qopenglfunctions_3_3_core.h \
@@ -845,21 +848,21 @@ debug/OpenGLWindow.o: OpenGLWindow.cpp OpenGLWindow.h \
 		../headers/sgraph/INode.h \
 		../headers/Light.h \
 		../headers/Material.h \
+		lightlocation.h \
 		../headers/glm/gtc/type_ptr.hpp \
 		../headers/glm/gtc/quaternion.hpp \
 		../headers/glm/gtc/constants.hpp \
 		../headers/glm/gtc/constants.inl \
 		../headers/glm/gtc/quaternion.inl \
 		../headers/glm/gtc/type_ptr.inl \
+		../headers/glm/gtc/matrix_transform.hpp \
+		../headers/glm/gtc/matrix_transform.inl \
 		../headers/TextureImage.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/QOpenGLTexture \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qopengltexture.h \
 		../headers/ObjectInstance.h \
 		../headers/PolygonMesh.h \
 		../headers/IVertexData.h \
-		lightlocation.h \
-		../headers/glm/gtc/matrix_transform.hpp \
-		../headers/glm/gtc/matrix_transform.inl \
 		VertexAttrib.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/QScreen \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qscreen.h \
@@ -1053,12 +1056,15 @@ debug/View.o: View.cpp View.h \
 		../headers/sgraph/INode.h \
 		../headers/Light.h \
 		../headers/Material.h \
+		lightlocation.h \
 		../headers/glm/gtc/type_ptr.hpp \
 		../headers/glm/gtc/quaternion.hpp \
 		../headers/glm/gtc/constants.hpp \
 		../headers/glm/gtc/constants.inl \
 		../headers/glm/gtc/quaternion.inl \
 		../headers/glm/gtc/type_ptr.inl \
+		../headers/glm/gtc/matrix_transform.hpp \
+		../headers/glm/gtc/matrix_transform.inl \
 		../headers/TextureImage.h \
 		C:/Qt/5.7/mingw53_32/include/QtGui/QImage \
 		C:/Qt/5.7/mingw53_32/include/QtGui/qimage.h \
@@ -1084,9 +1090,6 @@ debug/View.o: View.cpp View.h \
 		../headers/ObjectInstance.h \
 		../headers/PolygonMesh.h \
 		../headers/IVertexData.h \
-		lightlocation.h \
-		../headers/glm/gtc/matrix_transform.hpp \
-		../headers/glm/gtc/matrix_transform.inl \
 		VertexAttrib.h \
 		../headers/sgraph/ScenegraphInfo.h \
 		../headers/sgraph/SceneXMLReader.h \

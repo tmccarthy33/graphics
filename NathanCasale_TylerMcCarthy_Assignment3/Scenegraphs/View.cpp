@@ -42,6 +42,7 @@ void View::initScenegraph(util::OpenGLFunctions &gl, const string& filename) thr
   shaderVarsToVertexAttribs["vTexCoord"] = "texcoord";
   renderer.initShaderProgram(program,shaderVarsToVertexAttribs);
   scenegraph->setRenderer<VertexAttrib>(&renderer,sinfo.meshes);
+  scenegraph->addTexturesToRenderer();
   program.disable(gl);
 
 }
@@ -103,25 +104,29 @@ void View::draw(util::OpenGLFunctions& gl)
                         false,
                         glm::value_ptr(proj));
 
-  gl.glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
+  //gl.glPolygonMode(GL_FRONT_AND_BACK,GL_LINE);
 
-  //gl.glPolygonMode(GL.GL_FRONT_AND_BACK,GL3.GL_LINE);
-
-  if(!ymca)
-  {
-      scenegraph->animate(time, 1, "ONE");
-      scenegraph->animate(time, 2, "TWO");
-  }
 
   scenegraph->parseForLights(lightLocations, modelview, gl,camera_transform);
 
   if(camera_type == FPS)
   {
       modelview.top() = modelview.top() *
-              glm::translate(glm::mat4(1.0f),glm::vec3(0.0f, -0.85f, 0.4f)) *
+              glm::translate(glm::mat4(1.0f),glm::vec3(0.0f, -0.85f, 0.37f)) *
+              glm::rotate(glm::mat4(1.0f), glm::radians(180.0f), glm::vec3(0.0f, 1.0f, 0.0f)) *
               camera_transform;
               //* trackballTransform;
   }
+
+  if(!ymca)
+  {
+      //scenegraph->animate(time, 2, "");
+      //scenegraph->animate(time, 2, "TWO");
+  }
+
+
+  gl.glEnable(GL_TEXTURE_2D);
+  gl.glActiveTexture(GL_TEXTURE0);
 
   scenegraph->draw(modelview);
   gl.glFlush();
