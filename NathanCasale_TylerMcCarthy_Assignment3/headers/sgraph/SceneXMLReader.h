@@ -202,7 +202,7 @@ namespace sgraph
             {
               node = new sgraph::LeafNode(objectname, scenegraph, name);
               if(textureName == "")
-                  node->setTextureName("white");
+                  node->setTextureName("metal");
               else
                   node->setTextureName(textureName);
 

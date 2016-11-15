@@ -82,11 +82,11 @@ void main()
 
 
 
-        fColor = fColor + in_spotlight*vec4(ambient+diffuse+specular,1.0) - in_spotlight*vec4(ambient+diffuse+specular,1.0) ;
+        //fColor = fColor + in_spotlight*vec4(ambient+diffuse+specular,1.0) - in_spotlight*vec4(ambient+diffuse+specular,1.0) ;
         //fColor = fColor + vec4(0,0,1,1) - fColor;
         fColor = fColor + vec4(ambient+diffuse+specular,1.0);
         //fColor = fColor + vec4(0.5*(1+dDotNegL), 0.5*(1+dDotNegL),0.5*(1+dDotNegL),1.0);
     }
-    fColor = fColor + 0*texture(image,fTexCoord.st);
+    fColor = fColor + texture(image,fTexCoord.st);
     //fColor = vec4(fTexCoord.s,fTexCoord.t,0,1);
 }

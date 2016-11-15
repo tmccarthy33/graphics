@@ -184,11 +184,6 @@ public:
                if(spot_angle == 0)
                    spot_angle = 180.0f;
                gl.glUniform1f(lL.spotangle,spot_angle);
-
-
-
-
-
            }
         }
 
@@ -231,10 +226,8 @@ public:
 
             glContext->glUniformMatrix4fv(loc,
                                   1,
-                                  false,glm::value_ptr(transformation));
-
-
-
+                                  false,
+                                  glm::value_ptr(transformation));
 
 
            loc = shaderLocations.getLocation("normalmatrix");
@@ -243,7 +236,8 @@ public:
             glm::mat4 normal_mat = glm::inverse(glm::transpose(transformation));
             glContext->glUniformMatrix4fv(loc,
                                   1,
-                                  false,glm::value_ptr(normal_mat));
+                                  false,
+                                  glm::value_ptr(normal_mat));
 
 
             //Pass Material Properties to Shader
@@ -272,75 +266,35 @@ public:
             glContext->glUniform1f(loc,
                                     material.getShininess());
 
+            //Texture Coords
+            glm::mat4 texture_transform = glm::mat4(1.0f);
+            loc = shaderLocations.getLocation("texturematrix");
+            if(loc < 0)
+                throw(runtime_error("No shader variable for \"texturematrix\""));
+            glContext->glUniformMatrix4fv(loc,
+                                    1,
+                                    false,
+                                    glm::value_ptr(texture_transform));
+
             //Do the processing for our texture
             loc = shaderLocations.getLocation("image");
             if(loc < 0)
                 throw(runtime_error("No shader variable for \"image\""));
 
-            QOpenGLTexture * tex = textures[textureName]->getTexture();
+            textures[textureName]->getTexture()->setWrapMode(QOpenGLTexture::Repeat);
+            textures[textureName]->getTexture()->setMinMagFilters(QOpenGLTexture::Nearest,QOpenGLTexture::Nearest);
 
-            tex->bind();
+            //glContext->glEnable(GL_TEXTURE_2D);
+
+            //glContext->glActiveTexture(GL_TEXTURE0);
 
             glContext->glUniform1i(loc,0);
+
+            textures[textureName]->getTexture()->bind();
 
             meshRenderers[name]->draw(*glContext);
         }
     }
-
-    /*void drawMesh(const string& name,
-                  const util::Material& material,
-                  const util::Light& light,
-                  const string& textureName,
-                  const glm::mat4& transformation)
-    {
-        //Pass Modelview to shader
-        int loc = shaderLocations.getLocation("modelview");
-        if(loc < 0)
-            throw runtime_error("No shader varialbe for \" modelview\"");
-        glContext->glUniformMatrix4fv(loc,
-                                      1,
-                                      false,
-                                      glm::value_ptr(transformation));
-
-        //Pass Normal Matrix to shader
-        loc = shaderLocations.getLocation("normalmatrix");
-        if(loc < 0)
-            throw runtime_error("No shader varialbe for \" normalmatrix\"");
-        glm::mat4 normal_mat = glm::inverse(glm::transpose(transformation));
-        glContext->glUniformMatrix4fv(loc,
-                                      1,
-                                      false,
-                                      glm::value_ptr(normal_mat));
-
-        //Pass Texture variables to Shader
-        //Probably going to need to expand upon this/add texture to parameters
-        loc = shaderLocations.getLocation("texturematrix");
-        if(loc < 0)
-            throw runtime_error("No shader varialbe for \" texturematrix \"");
-        glContext->glUniform1i(loc,
-                               0);
-
-        //textures
-        util::TextureImage *textureImage;
-
-        textureImage = textures[textureName];
-
-        QOpenGLTexture * tex = textureImage->getTexture();
-
-        tex->setWrapMode(QOpenGLTexture::Repeat);
-        tex->setMinMagFilters(QOpenGLTexture::Nearest,QOpenGLTexture::Nearest);
-
-        tex->bind();
-
-
-
-
-
-
-
-    }*/
-
-
 
     /**
      * Queries the shader program for all variables and locations, and adds them to itself

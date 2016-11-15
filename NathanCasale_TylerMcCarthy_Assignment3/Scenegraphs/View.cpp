@@ -134,7 +134,6 @@ void View::draw(util::OpenGLFunctions& gl)
 
 
   program.disable(gl);
-  //scenegraph->resetLightCount();
 }
 
 void View::mousePressed(int x,int y)

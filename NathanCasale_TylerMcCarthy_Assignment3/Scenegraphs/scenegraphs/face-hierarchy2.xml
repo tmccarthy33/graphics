@@ -4,7 +4,7 @@
     <instance name="cylinder" path="models/cylinder"></instance>
     <instance name="cone" path="models/cone"></instance>
     <image name="earth" path="textures/earthmap.png" />
-    <image name="white" path="textures/whitebox.png" />
+    <image name="white" path="textures/checkerboard.png" />
 
    <light>
         <ambient>0.5 0.5 0.5</ambient>
@@ -38,7 +38,7 @@
                 <set>
                     <scale>20 25 20</scale>
                 </set>
-                <object instanceof="sphere">
+                <object instanceof="sphere" texture="earth">
                     <material>
                         <ambient> 0.1 0.1 0.1 </ambient>
                         <diffuse> 0.8 0.8 0.6</diffuse>

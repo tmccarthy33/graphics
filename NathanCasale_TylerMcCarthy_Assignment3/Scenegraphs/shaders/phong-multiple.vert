@@ -1,7 +1,5 @@
 #version 140
 
-
-
 in vec4 vPosition;
 in vec4 vNormal;
 in vec4 vTexCoord;
@@ -28,6 +26,6 @@ void main()
     vec4 tNormal = normalmatrix * vNormal;
     fNormal = normalize(tNormal.xyz);
 
-    //fTexCoord = texturematrix * vec4(1*vTexCoord.s,1*vTexCoord.t,0,1);
+    fTexCoord = texturematrix * vec4(1*vTexCoord.s,1*vTexCoord.t,0,1);
 
 }
