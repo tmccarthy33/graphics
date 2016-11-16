@@ -1,0 +1,37 @@
+<scene>
+    <image name="white" path="textures/whitetex.png" />    
+    <image name="ewokface" path="textures/ewok_face.png" />
+    <image name="fur" path="textures/fur.png" />
+    <image name="orangecloth" path="textures/orange_cloth.png" /> 
+    <image name="earth" path="textures/earthmap.png" />
+    <image name="checker" path="textures/checkerboard.png" />
+    <image name="metal" path="textures/metaltex.png" />
+    <image name="walkertex" path="textures/walker.png" />
+
+    <light>
+        <ambient>0.2 0.2 0.2</ambient>
+        <diffuse>0.1 0.1 0.1</diffuse>
+        <specular>0.1 0.1 0.1</specular>
+        <position>0 200 0 </position>
+        <spotangle> 180 </spotangle>
+        <spotdirection>0 1 0 </spotdirection>
+    </light>
+
+    <group>
+        <transform>
+            <set>
+                <translate>-40 0 0</translate>
+            </set>
+            <group name="WALKER" from="scenegraphs/walker_updated.xml">
+            </group>
+        </transform>
+		<transform>
+            <set>
+                <translate>-40 0 100</translate>
+                <rotate>180 0 1 0 </rotate>
+            </set>
+            <group name="EWOK" from="scenegraphs/ewok.xml">
+            </group>
+        </transform>
+    </group>
+</scene>

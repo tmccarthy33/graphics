@@ -1,0 +1,12 @@
+Partners:
+Nathan Casale
+Tyler McCarthy
+
+Program Operation:
+-First, move included 'Scenegraph.h' file to correct location in headers directory. This updated header
+ contains the animation information for our models.
+-Open/Compile/Run Scenegraphs.pro
+-The program will prompt you to enter name of xml file.
+	1. "two-walkers.xml" - Entering this file will show you our completed assignemnt three with 
+						   two models and four total animations.
+	2. "humanoid-YMCA.xml" - This option will show four humanoids doing the YMCA

@@ -1,0 +1,397 @@
+<scene>
+    <instance name="sphere" path="models/sphere"></instance>
+    <instance name="box" path="models/box"></instance>
+    <instance name="cylinder" path="models/cylinder"></instance>
+    <instance name="cone" path="models/cone"></instance>
+    <image name="white" path="textures/whitetex.png" />    
+	<image name="ewokface" path="textures/ewok_face.png" />
+	<image name="fur" path="textures/fur.png" />
+	<image name="orangecloth" path="textures/orange_cloth.png" />
+    
+    <transform>
+        <set>
+            <translate>0 -25 0</translate>
+            <scale>50 50 50</scale>
+        </set>
+        <group name="ewok">
+            <transform>
+                <set>
+                    <scale>0.0125 0.0125 0.0125</scale>
+                </set>
+                <group>
+                    <group name="lowerbody">
+                        <transform name="leftleg">
+                            <set>
+                                <translate>5 0 0</translate>
+                            </set>
+                            <group name="leg">
+                                <transform name="shin">
+                                    <set>
+                                        <scale>2 10 2</scale>
+                                    </set>
+                                    <object instanceof="cylinder" texture="fur">
+                                        <material>
+                                            <ambient>0.1 0.1 0.1</ambient>
+                                            <diffuse>0.4 0.4 0.4</diffuse>
+                                            <specular>0.4 0.4 0.4</specular>
+                                            <shininess>100</shininess>
+                                        </material>
+                                    </object>
+                                </transform>
+                                <transform>
+                                    <set>
+                                        <translate>0 11 0</translate>
+                                    </set>
+                                    <transform name="knee">
+                                        <set>
+                                            <scale>2 2 2</scale>
+                                        </set>
+                                        <object instanceof="sphere" texture="fur">
+                                            <material>
+                                                <ambient>0.1 0.1 0.1</ambient>
+                                                <diffuse>0.4 0.4 0.4</diffuse>
+                                                <specular>0.4 0.4 0.4</specular>
+                                                <shininess>100</shininess>
+                                            </material>
+                                        </object>
+                                    </transform>
+                                </transform>
+                                <transform>
+                                    <set>
+                                        <translate>0 12 0</translate>
+                                    </set>
+                                    <transform name="thigh">
+                                        <set>
+                                            <scale>2 10 2</scale>
+                                        </set>
+                                        <object instanceof="cylinder" texture="fur">
+                                            <material>
+                                                <ambient>0.1 0.1 0.1</ambient>
+                                                <diffuse>0.4 0.4 0.4</diffuse>
+                                                <specular>0.4 0.4 0.4</specular>
+                                                <shininess>100</shininess>
+                                            </material>
+                                        </object>
+                                    </transform>
+                                </transform>
+                                <transform>
+                                    <set>
+                                        <translate>0 22 0</translate>
+                                    </set>
+                                    <transform name="hip">
+                                        <set>
+                                            <scale>2 2 2</scale>
+                                        </set>
+                                        <object instanceof="sphere" texture="fur">
+                                            <material>
+                                                <ambient>0.1 0.1 0.1</ambient>
+                                                <diffuse>0.4 0.4 0.4</diffuse>
+                                                <specular>0.4 0.4 0.4</specular>
+                                                <shininess>100</shininess>
+                                            </material>
+                                        </object>
+                                    </transform>
+                                </transform>
+                            </group>
+                        </transform>
+                        <transform name="rightleg">
+                            <set>
+                                <translate>-5 0 0</translate>
+                            </set>
+                            <group name="leg">
+                                <transform name="shin">
+                                    <set>
+                                        <scale>2 10 2</scale>
+                                    </set>
+                                    <object instanceof="cylinder" texture="fur">
+                                        <material>
+                                            <ambient>0.1 0.1 0.1</ambient>
+                                            <diffuse>0.4 0.4 0.4</diffuse>
+                                            <specular>0.4 0.4 0.4</specular>
+                                            <shininess>100</shininess>
+                                        </material>
+                                    </object>
+                                </transform>
+                                <transform>
+                                    <set>
+                                        <translate>0 11 0</translate>
+                                    </set>
+                                    <transform name="knee">
+                                        <set>
+                                            <scale>2 2 2</scale>
+                                        </set>
+                                        <object instanceof="sphere" texture="fur">
+                                            <material>
+                                                <ambient>0.1 0.1 0.1</ambient>
+                                                <diffuse>0.4 0.4 0.4</diffuse>
+                                                <specular>0.4 0.4 0.4</specular>
+                                                <shininess>100</shininess>
+                                            </material>
+                                        </object>
+                                    </transform>
+                                </transform>
+                                <transform>
+                                    <set>
+                                        <translate>0 12 0</translate>
+                                    </set>
+                                    <transform name="thigh">
+                                        <set>
+                                            <scale>2 10 2</scale>
+                                        </set>
+                                        <object instanceof="cylinder" texture="fur">
+                                            <material>
+                                                <ambient>0.1 0.1 0.1</ambient>
+                                                <diffuse>0.4 0.4 0.4</diffuse>
+                                                <specular>0.4 0.4 0.4</specular>
+                                                <shininess>100</shininess>
+                                            </material>
+                                        </object>
+                                    </transform>
+                                </transform>
+                                <transform>
+                                    <set>
+                                        <translate>0 22 0</translate>
+                                    </set>
+                                    <transform name="hip">
+                                        <set>
+                                            <scale>2 2 2</scale>
+                                        </set>
+                                        <object instanceof="sphere" texture="fur">
+                                            <material>
+                                                <ambient>0.1 0.1 0.1</ambient>
+                                                <diffuse>0.4 0.4 0.4</diffuse>
+                                                <specular>0.4 0.4 0.4</specular>
+                                                <shininess>100</shininess>
+                                            </material>
+                                        </object>
+                                    </transform>
+                                </transform>
+                            </group>
+                        </transform>
+                    </group>
+                    <group name="upperbody">
+                        <transform>
+                            <set>
+                                <translate>0 24 0</translate>
+                            </set>
+                            <group>
+                                <transform name="pelvis">
+                                    <set>
+                                        <translate>5 0 0</translate>
+                                        <rotate>90 0 0 1</rotate>
+                                        <scale>2 10 2</scale>
+                                    </set>
+                                    <object instanceof="cylinder" texture="fur">
+                                        <material>
+                                            <ambient>0.1 0.1 0.1</ambient>
+                                            <diffuse>0.4 0.4 0.4</diffuse>
+                                            <specular>0.4 0.4 0.4</specular>
+                                            <shininess>100</shininess>
+                                        </material>
+                                    </object>
+                                </transform>
+                                <transform name="torso">
+                                    <set>
+                                        <translate>0 0 0</translate>
+                                        <scale>5 20 3</scale>
+                                    </set>
+                                    <object instanceof="cylinder" texture="orangecloth">
+                                        <material>
+                                            <ambient>0.1 0.1 0.1</ambient>
+                                            <diffuse>0.4 0.4 0.4</diffuse>
+                                            <specular>0.4 0.4 0.4</specular>
+                                            <shininess>100</shininess>
+                                        </material>
+                                    </object>
+                                </transform>
+                                <transform name="shoulder">
+                                    <set>
+                                        <translate>10 21 0</translate>
+                                        <rotate>90 0 0 1</rotate>
+                                        <scale>2 20 2</scale>
+                                    </set>
+                                    <object instanceof="cylinder" texture="orangecloth">
+                                        <material>
+                                            <ambient>0.1 0.1 0.1</ambient>
+                                            <diffuse>0.4 0.4 0.4</diffuse>
+                                            <specular>0.4 0.4 0.4</specular>
+                                            <shininess>100</shininess>
+                                        </material>
+                                    </object>
+                                </transform>
+                                <transform name="lefthand">
+                                    <set>
+                                        <translate>10 22 0</translate>
+                                    </set>
+                                    <transform>
+                                        <set>
+                                        </set>
+                                        <group>
+                                            <transform>
+                                                <set>
+                                                    <translate>0 -10 0</translate>
+                                                </set>
+                                                <transform name="arm">
+                                                    <set>
+                                                        <scale>2 10 2</scale>
+                                                    </set>
+                                                    <object instanceof="cylinder" texture="fur">
+                                                        <material>
+                                                            <ambient>0.1 0.1 0.1</ambient>
+                                                            <diffuse>0.4 0.4 0.4</diffuse>
+                                                            <specular>0.4 0.4 0.4</specular>
+                                                            <shininess>100</shininess>
+                                                        </material>
+                                                    </object>
+                                                </transform>
+                                            </transform>
+                                            <transform>
+                                                <set>
+                                                    <translate>0 -11 0</translate>
+                                                </set>
+                                                <transform name="leftelbow">
+                                                    <set>
+                                                        <scale>2 2 2</scale>
+                                                    </set>
+                                                    <object instanceof="sphere" texture="fur">
+                                                        <material>
+                                                            <ambient>0.1 0.1 0.1</ambient>
+                                                            <diffuse>0.4 0.4 0.4</diffuse>
+                                                            <specular>0.4 0.4 0.4</specular>
+                                                            <shininess>100</shininess>
+                                                        </material>
+                                                    </object>
+                                                </transform>
+                                            </transform>
+                                            <transform>
+                                                <set>
+                                                    <translate>0 -12 0</translate>
+                                                </set>
+                                                <transform name="leftforearm">
+                                                    <set>
+                                                        <translate>0 -10 0</translate>
+                                                        <scale>2 10 2</scale>
+                                                    </set>
+                                                    <object instanceof="cylinder" texture="fur">
+                                                        <material>
+                                                            <ambient>0.1 0.1 0.1</ambient>
+                                                            <diffuse>0.4 0.4 0.4</diffuse>
+                                                            <specular>0.4 0.4 0.4</specular>
+                                                            <shininess>100</shininess>
+                                                        </material>
+                                                    </object>
+                                                </transform>
+                                            </transform>
+                                        </group>
+                                    </transform>
+                                </transform>
+                                <transform name="right">
+                                    <set>
+                                        <translate>-10 22 0</translate>
+                                    </set>
+                                    <transform name="righthand">
+                                        <set>
+                                        </set>
+                                        <group>
+                                            <transform>
+                                                <set>
+                                                    <translate>0 -10 0</translate>
+                                                </set>
+                                                <transform name="rightarm">
+                                                    <set>
+                                                        <scale>2 10 2</scale>
+                                                    </set>
+                                                    <object instanceof="cylinder" texture="fur">
+                                                        <material>
+                                                            <ambient>0.1 0.1 0.1</ambient>
+                                                            <diffuse>0.4 0.4 0.4</diffuse>
+                                                            <specular>0.4 0.4 0.4</specular>
+                                                            <shininess>100</shininess>
+                                                        </material>
+                                                    </object>
+                                                </transform>
+                                            </transform>
+                                            <transform>
+                                                <set>
+                                                    <translate>0 -11 0</translate>
+                                                </set>
+                                                <transform name="rightelbow">
+                                                    <set>
+                                                        <scale>2 2 2</scale>
+                                                    </set>
+                                                    <object instanceof="sphere" texture="fur">
+                                                        <material>
+                                                            <ambient>0.1 0.1 0.1</ambient>
+                                                            <diffuse>0.4 0.4 0.4</diffuse>
+                                                            <specular>0.4 0.4 0.4</specular>
+                                                            <shininess>100</shininess>
+                                                        </material>
+                                                    </object>
+                                                </transform>
+                                            </transform>
+                                            <transform>
+                                                <set>
+                                                    <translate>0 -12 0</translate>
+                                                </set>
+                                                <transform name="rightforearm">
+                                                    <set>
+                                                        <translate>0 -10 0</translate>
+                                                        <scale>2 10 2</scale>
+                                                    </set>
+                                                    <object instanceof="cylinder" texture="fur">
+                                                        <material>
+                                                            <ambient>0.1 0.1 0.1</ambient>
+                                                            <diffuse>0.4 0.4 0.4</diffuse>
+                                                            <specular>0.4 0.4 0.4</specular>
+                                                            <shininess>100</shininess>
+                                                        </material>
+                                                    </object>
+                                                </transform>
+                                            </transform>
+                                        </group>
+                                    </transform>
+                                </transform>
+                            </group>
+                        </transform>
+                    </group>
+                    <group name="headneck">
+                        <transform>
+                            <set>
+                                <translate>0 45 0</translate>
+                            </set>
+                            <group>
+                                <transform name="neck">
+                                    <set>
+                                        <scale>1.5 5 1.5</scale>
+                                    </set>
+                                    <object instanceof="cylinder" texture="orangecloth">
+                                        <material>
+                                            <ambient>0.1 0.1 0.1</ambient>
+                                            <diffuse>0.4 0.4 0.4</diffuse>
+                                            <specular>0.4 0.4 0.4</specular>
+                                            <shininess>100</shininess>
+                                        </material>
+                                    </object>
+                                </transform>
+                                <transform name="head">
+                                    <set>
+                                        <translate>0 8 0</translate>
+                                        <scale>3.2 3.5 3.2</scale>
+                                    </set>
+                                    <object instanceof="sphere" texture="ewokface">
+                                        <material>
+                                            <ambient>0.1 0.1 0.1</ambient>
+                                            <diffuse>0.4 0.4 0.4</diffuse>
+                                            <specular>0.4 0.4 0.4</specular>
+                                            <shininess>100</shininess>
+                                        </material>
+                                    </object>
+                                </transform>
+                            </group>
+                        </transform>
+                    </group>
+                </group>
+            </transform>
+        </group>
+    </transform>
+</scene>
